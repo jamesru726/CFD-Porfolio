@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: 2D Steady-State Heat Conduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 300px; /* Add space at the bottom to enable scrolling */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        figure {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #555;
+            margin-top: 7px;
+            margin-bottom: 20px;
+        }
+
+        .resize-image1 {
+            width: 650px; /* New width for this specific image */
+        }
+
+        .resize-image2 {
+            width: 1000px; /* New width for this specific image */
+        }
+
+        .figure-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Project 1: 2D Steady-State Heat Conduction</h2>
+
+    <p>This is the discretization of the 2D steady-state heat conduction with variable thermal conductivity.</p>
+    <p>The problem below has the Dirichlet boundary condition on the east, south, and west face, while having the Neumann boundary condition on the north face.</p>
+    
+    <figure>
+        <img src="cfdproj1image.png" alt="Problem diagram for CFD project 1">
+        <figcaption>Figure 1: Diagram illustrating the boundary conditions for 2D steady-state heat conduction problem.</figcaption>
+    </figure>
+
+    <p>This begins with the discretization of the 2D heat conduction in the figure below.</p>
+    
+    <figure>
+        <img class="resize-image1" src="discretized.png" alt="Problem diagram for CFD project 1">
+        <figcaption>Figure 2: Equation of 2D steady state heat conduction with variable thermal conductivity.</figcaption>
+    </figure>
+    
+    <p>For the initial conditions above, these are the results using a grid size of 300x300</p>
+    
+    <div class="figure-container">
+        <figure>
+            <img class="resize-image2" src="15and0point1.png" alt="Problem diagram for CFD project 1">
+            <figcaption>Figure 3: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 0.1</figcaption>
+        </figure>
+    
+        <figure>
+            <img class="resize-image2" src="15and15.png" alt="Problem diagram for CFD project 1">
+            <figcaption>Figure 4: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 15</figcaption>
+        </figure>
+    </div>
+    
+    <div class="figure-container">
+        <figure>
+            <img class="resize-image2" src="15and100.png" alt="Problem diagram for CFD project 1">
+            <figcaption>Figure 5: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 100</figcaption>
+        </figure>
+    
+        <figure>
+            <img class="resize-image2" src="15and200.png" alt="Problem diagram for CFD project 1">
+            <figcaption>Figure 6: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 200</figcaption>
+        </figure>
+    </div>
+    
+    <figure>
+        <img class="resize-image2" src="15and300.png" alt="Problem diagram for CFD project 1">
+        <figcaption>Figure 7: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 300</figcaption>
+    </figure>
+
+</body>
+</html>
