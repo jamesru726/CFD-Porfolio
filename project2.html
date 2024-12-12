@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: 2D Steady-State Heat Conduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 300px; /* Add space at the bottom to enable scrolling */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        figure {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #555;
+            margin-top: 7px;
+            margin-bottom: 20px;
+        }
+
+        .resize-image1 {
+            width: 650px; /* New width for this specific image */
+        }
+
+        .resize-image2 {
+            width: 1000px; /* New width for this specific image */
+        }
+
+        .figure-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .paragraph {
+            background-color: #fff; /* White background for the paragraph */
+            max-width: 800px; /* Maximum width for better readability */
+            line-height: 1.2; /* Increased line height for readability */
+            text-align: justify; /* Justified text alignment */
+            text-indent: 60px; /* Indent for the first line */
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Project 2: 2D Unsteady Heat Conduction with Variable Heat Conduction</h2>
+    <p class="paragraph">This is the discretization of the 2D unsteady heat conduction with variable thermal conductivity.
+        This is the discretization of the 2D unsteady heat conduction with variable thermal conductivity. 
+        The problem below shows a composite square block mof dimensions 10cm x 10cm, originally at a uniform temperature at 20C. 
+        The problem has the top boundary at 10C, left and right boundaries at 35C, and the bottom boundary at 20C.
+        The upper section is made of stainless steel, while the rest of the material is tested with various other materials.
+    </p>
+    
+    <video style="border: 3px solid black" controls autoplay>
+        <source src="images/proj2/Implicit_Brass_0.04_1000_Steps_50x50_gif.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+</body>
+</html>
