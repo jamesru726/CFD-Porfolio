@@ -55,54 +55,74 @@
             margin-top: 20px;
         }
 
+        .paragraph {
+            background-color: #fff; /* White background for the paragraph */
+            max-width: 1000px; /* Maximum width for better readability */
+            line-height: 1.2; /* Increased line height for readability */
+            text-align: justify; /* Justified text alignment */
+            text-indent: 60px; /* Indent for the first line */
+        }
+        
     </style>
 </head>
 <body>
     <h2>Project 1: 2D Steady-State Heat Conduction</h2>
 
+    <a href="https://github.com/jamesru726/2-D-Heat-Transfer-with-Variable-Conduction-Coefficient">Click here to test the code for yourself.</a>
+
     <p>This is the discretization of the 2D steady-state heat conduction with variable thermal conductivity.</p>
     <p>The problem below has the Dirichlet boundary condition on the east, south, and west face, while having the Neumann boundary condition on the north face.</p>
     
     <figure>
-        <img src="images/cfdproj1image.png" alt="Problem diagram for CFD project 1">
+        <img src="images/proj1/cfdproj1image.png" alt="Problem diagram for CFD project 1">
         <figcaption>Figure 1: Diagram illustrating the boundary conditions for 2D steady-state heat conduction problem.</figcaption>
     </figure>
 
     <p>This begins with the discretization of the 2D heat conduction in the figure below.</p>
     
     <figure>
-        <img class="resize-image1" src="images/discretized.png" alt="Problem diagram for CFD project 1">
+        <img class="resize-image1" src="images/proj1/discretized.png" alt="Discretized equations">
         <figcaption>Figure 2: Equation of 2D steady state heat conduction with variable thermal conductivity.</figcaption>
     </figure>
     
     <p>For the initial conditions above, these are the results using a grid size of 300x300</p>
+
+    <p class="paragraph"> In figure 3, when the material of the bottom material is much lower than the material of the top material, we get temperatures outside 
+        of what is physically possible. This could be due to the way I handled the boundary between the two materials in the code. In figure 4, when the materials 
+        have the same thermal conductivity, we get a uniform temperature distribution.
+    </p>
     
     <div class="figure-container">
         <figure>
-            <img class="resize-image2" src="images/15and0point1.png" alt="Problem diagram for CFD project 1">
+            <img class="resize-image2" src="images/proj1/15and0point1.png" alt="Contour plot">
             <figcaption>Figure 3: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 0.1</figcaption>
         </figure>
     
         <figure>
-            <img class="resize-image2" src="images/15and15.png" alt="Problem diagram for CFD project 1">
+            <img class="resize-image2" src="images/proj1/15and15.png" alt="Contour plot">
             <figcaption>Figure 4: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 15</figcaption>
         </figure>
     </div>
     
+    <p class="paragraph"> In figure 5, 6, and 7, I keep increasing the thermal conductivity of the bottom material. What we see is the hot temperature slowly 
+        creeping towards the right side, indicating that the heat is spreading faster in the bottom material. However, just like in figure 3, if the difference 
+        between the two thermal conductivities are too large, we begin to get temperature that are physically impossible.
+    </p>
+
     <div class="figure-container">
         <figure>
-            <img class="resize-image2" src="images/15and100.png" alt="Problem diagram for CFD project 1">
+            <img class="resize-image2" src="images/proj1/15and100.png" alt="Contour plot">
             <figcaption>Figure 5: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 100</figcaption>
         </figure>
     
         <figure>
-            <img class="resize-image2" src="images/15and200.png" alt="Problem diagram for CFD project 1">
+            <img class="resize-image2" src="images/proj1/15and200.png" alt="Contour plot">
             <figcaption>Figure 6: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 200</figcaption>
         </figure>
     </div>
     
     <figure>
-        <img class="resize-image2" src="images/15and300.png" alt="Problem diagram for CFD project 1">
+        <img class="resize-image2" src="images/proj1/15and300.png" alt="Contour plot">
         <figcaption>Figure 7: Contour plot with k<sub>top</sub> = 15 and  k<sub>bottom</sub> = 300</figcaption>
     </figure>
 

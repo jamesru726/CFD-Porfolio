@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: 2D Steady-State Heat Conduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 300px; /* Add space at the bottom to enable scrolling */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        figure {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #555;
+            margin-top: 7px;
+            margin-bottom: 20px;
+        }
+
+        .resize-image1 {
+            width: 650px; /* New width for this specific image */
+        }
+
+        .resize-image2 {
+            width: 1000px; /* New width for this specific image */
+        }
+
+        .figure-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .paragraph {
+            background-color: #fff; /* White background for the paragraph */
+            max-width: 800px; /* Maximum width for better readability */
+            line-height: 1.2; /* Increased line height for readability */
+            text-align: justify; /* Justified text alignment */
+            text-indent: 60px; /* Indent for the first line */
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Project 3: 2D Steady Lid-Driven Cavity</h2>
+
+    <a href="https://github.com/jamesru726/2-D-Lid-Driven-Cavity">Click here to test the code for yourself.</a>
+
+    <p class="paragraph">This is model of the 2D steady lid-driven cavity using SIMPLE with a collocated grid. 
+        The problem below shows a square cavity dimensions 1m x 1m with the top lid moving at 1 m/s as a boundary condition.
+        The rest of the walls will have the no-slip boundary condition and no normal velocities.
+        We will test this with varying Reynolds Numbers.
+    </p>
+    
+    <p class = 'paragraph'>In figure 1, we have the flow field for Re = 100 on a 32x32 grid. We can see the propagation of the lid velocity towards to right, which then 
+        hits the right wall and creates a vortex in the center as it swirls. We also have individual graphs for the u velocity, v velocity, and pressure gradient.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100.png" alt="Model for Re = 100">
+            <figcaption>Figure 1: Velocity Flow Field: 32x32, Re = 100</figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>We also have individual graphs for the u velocity, v velocity, and pressure gradient.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100arrow.png" alt="Model for Re = 100">
+            <figcaption>Figure 2: Velocity Flow Field with Velocity Magnitude Arrows: 32x32, Re = 100</figcaption>
+        </figure>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100u.png" alt="Model for Re = 100">
+            <figcaption>Figure 2: Flow Field for u Velocity: 32x32, Re = 100</figcaption>
+        </figure>
+    </div>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100v.png" alt="Model for Re = 100">
+            <figcaption>Figure 3: Flow Field for v Velocity: 32x32, Re = 100</figcaption>
+        </figure>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100p.png" alt="Model for Re = 100">
+            <figcaption>Figure 4: Flow Field for Pressure Gradient: 32x32, Re = 100</figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>Next we have residuals to show convergence. Note that the residuals for v have a logarithmic bahavior. I am not sure what causes this, but I suspect an error in the script.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100resu.png" alt="Model for Re = 100">
+            <figcaption>Figure 5: Flow Field for v Velocity: 32x32, Re = 100</figcaption>
+        </figure>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100resv.png" alt="Model for Re = 100">
+            <figcaption>Figure 6: Flow Field for Pressure Gradient: 32x32, Re = 100</figcaption>
+        </figure>
+    </div>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100resp.png" alt="Model for Re = 100">
+            <figcaption>Figure 7: Flow Field for v Velocity: 32x32, Re = 100</figcaption>
+        </figure>
+
+    </div>
+    <p class = 'paragraph'>We also have the centerline velocities. 
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re100centerlines.png" alt="Model for Re = 100">
+            <figcaption>Figure 8: Centerline Velocities, 32x32, Re = 100</figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>To display stability, I tested with an increased grid size and higher Reynolds Numbers. From these tests, I found that it takes more iterations as we increase the 
+        grid size and Reynolds Number. The original Python script was too because of how much overhead the Gauss Seidel function had, since Python is an interpreted language, which 
+        needs to be translated to machine code. For speed, I made the Gauss Seidel function in C, which made the code run about 140x faster.
+    </p>
+
+    <p class = 'paragraph'>
+        For Reynolds Number of 1000, I ran the code for about 500 iterations. This results in the accurate capturing of the large center vortex, 
+        along with the recirculation zones in the bottom corners. For Reynolds Number of 10000, I ran the code for about 1000 iterations. This is also 
+        accurate when comparing to other figures found on the internet. The main different we see between Re = 1000 and Re 10000 is that vortex is larger 
+        and more circular and the recirculation zones are more present.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re1000.png" alt="Model for Re = 1000">
+            <figcaption>Figure 9: Velocity Flow Field: 100x100, Re = 1000</figcaption>
+        </figure>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re10000.png" alt="Model for Re = 10000">
+            <figcaption>Figure 10: Velocity Flow Field: 100x100, Re = 10000</figcaption>
+        </figure>
+    </div>
+
+    <p class = 'prargraph'>
+        The code is also capable of choosing which lid is moving. Below is the moving right wall.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj3/re1000right.png" alt="Model for Re = 1000">
+            <figcaption>Figure 11: Velocity Flow Field Right Wall: 100x100, Re = 1000</figcaption>
+        </figure>
+    </div>
+</body>
+</html>

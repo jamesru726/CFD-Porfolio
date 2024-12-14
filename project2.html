@@ -47,12 +47,19 @@
 
         .resize-image2 {
             width: 1000px; /* New width for this specific image */
+            
+        }
+
+        .resize-image3 {
+            width: 350px; /* New width for this specific image */
+            height: 350px;
         }
 
         .figure-container {
             display: flex;
             justify-content: center;
             margin-top: 20px;
+            gap: 50px
         }
         
         .paragraph {
@@ -66,19 +73,95 @@
     </style>
 </head>
 <body>
+
     <h2>Project 2: 2D Unsteady Heat Conduction with Variable Heat Conduction</h2>
+
     <p class="paragraph">This is the discretization of the 2D unsteady heat conduction with variable thermal conductivity.
-        This is the discretization of the 2D unsteady heat conduction with variable thermal conductivity. 
-        The problem below shows a composite square block mof dimensions 10cm x 10cm, originally at a uniform temperature at 20C. 
+        The problem below shows a composite square block of dimensions 10cm x 10cm, originally at a uniform temperature at 20C. 
         The problem has the top boundary at 10C, left and right boundaries at 35C, and the bottom boundary at 20C.
         The upper section is made of stainless steel, while the rest of the material is tested with various other materials.
     </p>
     
-    <video style="border: 3px solid black" controls autoplay>
-        <source src="images/proj2/Implicit_Brass_0.04_1000_Steps_50x50_gif.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <p class = 'paragraph'>
+        This first video is using Implicit Euler and Guass Seidel with brass on a 50x50 grid. This simulation is stable, as the temperatures converge, and 
+        the temperature distribution behaves as expected.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <video style="border: 3px solid black" controls autoplay loop>
+                <source src="images/proj2/Implicit_Brass_0.04_1000_Steps_50x50_gif.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <figcaption>
+                Video 1: Brass with 0.04 seconds time step, 1000 steps, 50x50
+            </figcaption>
+        </figure>
+    </div>
+    
+    <p class = 'paragraph'>
+        This second video is using Implicit Euler and Guass Seidel with beryllium on a 50x50 grid. This simulation is stable, as the temperatures converge, and 
+        the temperature distribution behaves as expected. The main difference is that beryllium 
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <video style="border: 3px solid black" controls autoplay loop>
+                <source src="images/proj2/Implicit_Beryllium_0.04_1000_Steps_50x50.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <figcaption>
+                Video 1: Brass with 0.04 seconds time step, 1000 steps, 50x50
+            </figcaption>
+        </figure>
+    </div>
 
+    <p class = 'paragraph'>
+        This third video is using Implicit Euler and Guass Seidel with gold on a 50x50 grid. This simulation is not, as the temperatures diverge pretty early on. It seems 
+        that certain values, like density, specific heat capacity, and thermal conductivity make this code diverge.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <video style="border: 3px solid black" controls autoplay loop>
+                <source src="images/proj2/Implicit_Gold_0.08_500_Steps_50x50_Diverges.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <figcaption>
+                Video 3: Gold with 0.04 seconds time step, 1000 steps, 50x50
+            </figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>
+        To show the difference between Implicit Euler and Explicit Euler, the figure below plots the temperature probes in the vertical center line. 
+        The difference is extremely small: on the scale of 1e-3 to 1e-4, as shown in figures 2-4.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image1" src="images/proj2/probes.png" alt="Probes">
+            <figcaption>
+                Figure 1: Temperature Probes
+            </figcaption>
+        </figure>
+    </div>
+    <div class = 'figure-container'>
+        <figure>
+            <img class="resize-image3" src="images/proj2/diff3.png" alt="Probes">
+            <figcaption>
+                Figure 2: Temperature Difference Top Probe
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="resize-image3" src="images/proj2/diff1.png" alt="Probes">
+            <figcaption>
+                Figure 3: Temperature Difference Center Probe
+            </figcaption>
+        </figure>
+        <figure>
+            <img class="resize-image3" src="images/proj2/diff2.png" alt="Probes">
+            <figcaption>
+                Figure 4: Temperature Difference Bottom Probe
+            </figcaption>
+        </figure>
+    </div>
 
 </body>
 </html>
