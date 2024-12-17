@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: 2D Steady-State Heat Conduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 300px; /* Add space at the bottom to enable scrolling */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        figure {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #555;
+            margin-top: 7px;
+            margin-bottom: 20px;
+        }
+
+        .resize-image1 {
+            width: 500px; /* New width for this specific image */
+        }
+
+        .resize-image2 {
+            width: 800px; /* New width for this specific image */
+        }
+
+        .figure-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 50px
+        }
+
+        .paragraph {
+            background-color: #fff; /* White background for the paragraph */
+            max-width: 1000px; /* Maximum width for better readability */
+            line-height: 1.2; /* Increased line height for readability */
+            text-align: justify; /* Justified text alignment */
+            text-indent: 60px; /* Indent for the first line */
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>Properties of Iterative Solvers</h2>
+
+    <p>
+        This is showing the effects of using iterative solvers: condition number, relaxation, and error decay.
+    </p>
+    <p class = 'paragraph'>
+        One of the main properties that determines the stability of an iterative solver is the condition number, which tells us how sensitive a matrix is to small changes in input. 
+        A low condition number indicates stability, while a high condition number indicate instability. These first few images demonstrate the stability of the Gauss Seidel 
+        iterative solver based on the condition number. 
+    </p>
+
+    <p class = 'paragraph'>
+        In figure 1, we can see tin the residuals that the solution diverges, and a solution is never reached. In figure 2, we can see that the solution converges and gives the correct solution, 
+        displaying the fact that a matrix with a low condition number is more stable than a matrix with a high condition number.
+    </p>
+
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image2' src = 'images/hw2/A1.png' alt = "Graph of A1 solution and residuals">
+            <figcaption>
+                Figure 1: A1 Solution and Residuals: Condition Number = 9163
+            </figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image2' src = 'images/hw2/A2.png' alt = "Graph of A2 solution and residuals">
+            <figcaption>
+                Figure 2: A2 Solution and Residuals: Condition Number = 288
+            </figcaption>
+        </figure>
+    </div>
+ 
+    <p class = 'paragraph'>
+        Next, we will show how errors diminish with iterative solvers.
+    </p>
+
+    <p class = 'paragraph'>
+        In the Figure 3, we can see that after 3 iterations on a grid size of 30, the high frequency errors are gone. In Figures 4 and 5, we can see the low frequency error is decreasing slowly 
+        until 798 iterations when it reaches its final solution with a tolerance of 1e-6. This highlights how high frequency errors are resolved very quickly, while low frequency 
+        errors are resolved slowly.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image2' src = 'images/hw2/errhighfreq.png' alt = "Graph of initial guess and solution">
+            <figcaption>    
+                Figure 3: Initial guess; Solution After 3 Iterations
+            </figcaption>
+        </figure>
+    </div>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image2' src = 'images/hw2/errlowfreq1.png' alt = "Graph of initial guess and solution">
+            <figcaption>
+                Figure 4: Initial guess; Solution After 50 Iterations
+            </figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image2' src = 'images/hw2/errlowfreq2.png' alt = "Graph of initial guess and solution">
+            <figcaption>
+                Figure 5: Initial guess; Solution After 798 Iterations
+            </figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>
+        This is further shown in Figure 6, where we can see a large dip in residuals, which is from the high frequency errors, while the slow 
+        descent is from the low frequency error.
+    </p>
+    <figure>
+        <img class = 'resize-image1' src = 'images/hw2/errres.png' alt = "Graph of A1 residuals">
+        <figcaption>
+            Figure 6: Residual for Plots above
+        </figcaption>
+    </figure>
+
+    <p class = 'paragraph'>
+        Now, we will see how these errors diminish with varying grid size. Figure 7 shows an initial guess with grid size of 6, which conveges after 138 iteration. A grid size 
+        of 6 converged 16 times quicker than a grid size of 2, indicating that low frequency errors diminish quicker with a smaller grid.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image1' src = 'images/hw2/grid3.png' alt = "Graph of grid size 3">
+            <figcaption>
+                Figure 7: Grid size 3 - Initial Guess, Solution at iteration 2
+            </figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = 'images/hw2/grid6.png' alt = "Graph of grid size 6">
+            <figcaption>
+                Figure 8: Grid size 6 - Initial Guess, Solution at iteration 32
+            </figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>
+        When refining the grid from 100 cells to 200, we can see that there is still a large low frequency error at 798 iterations. In figure 10, we can see that the error is even larger, 
+        meaning refining the grid makes low frequency errors more difficult to remove. However, we can apply over-relaxation to use more of the new solution and less of the old solution. 
+        In figure 11, we use a relaxation value of 1.8 for a grid size of 200, and the solution nearly converges at 798 iterations.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image1' src = 'images/hw2/grid100.png' alt = "Graph of grid size 100">
+            <figcaption>
+                Figure 9: Grid size 100 - Initial Guess, Solution iteration 798
+            </figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = 'images/hw2/grid200.png' alt = "Graph of grid size 200">
+            <figcaption>
+                Figure 10: Grid size 200 - Initial Guess, Solution iteration 798
+            </figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = 'images/hw2/grid200ur1.95.png' alt = "Graph of grid size 200">
+            <figcaption>
+                Figure 11: Grid size 200 - Initial Guess, Solution iteration 798
+            </figcaption>
+        </figure>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: 2D Steady-State Heat Conduction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 300px; /* Add space at the bottom to enable scrolling */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        figure {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 350px;
+        }
+
+        figcaption {
+            font-size: 16px;
+            color: #555;
+            margin-top: 7px;
+            margin-bottom: 20px;
+        }
+
+        .resize-image1 {
+            width: 500px; /* New width for this specific image */
+        }
+
+        .resize-image2 {
+            width: 800px; /* New width for this specific image */
+        }
+
+        .figure-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 50px
+        }
+
+        .paragraph {
+            background-color: #fff; /* White background for the paragraph */
+            max-width: 1000px; /* Maximum width for better readability */
+            line-height: 1.2; /* Increased line height for readability */
+            text-align: justify; /* Justified text alignment */
+            text-indent: 60px; /* Indent for the first line */
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>1D Steady Convection-Diffusion Problem with Varying Peclet Number</h2>
+
+    <p>
+        This is the discretization of the 1D steady convection-conduction problem.
+    </p>
+    <p class = 'paragraph'>
+        The purpose of this is to illustrate how grid size, discretization method, and Peclet Number affect the model. The Peclet Number, Pe, is described as a ratio of advection/convection transport rate over diffusion transport rate. As Pe approaches 0, the flow is dominated by diffusion and convection can be neglected. 
+        As Pe approaches infinity, the flow is dominated by convection and diffusion can be neglected, meaning the flow behavior downstream is also neglected.
+    </p>
+
+    <p class = 'paragraph'>
+        Below, each figure shows a plot of a transport value with Pe = 50 and varynig grid sizes. From figure 1, we can see that a coarse grid gives us oscillations, but in the next 2 figures, 
+        we see those oscillations slowly disappear, which tells us that if we refine the grid, these oscillations will lessen and eventually disappear.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe50grid10.png" alt = "Graph of pe = 50 and grid size of 10">
+            <figcaption>Figure 1: Pe = 50, grid = 10</figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe50grid20.png" alt = "Graph of pe = 50 and grid size of 20">
+            <figcaption>Figure 2: Pe = 50, grid = 20</figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe50grid50.png" alt = "Graph of pe = 50 and grid size of 50">
+            <figcaption>Figure 3: Pe = 50, grid = 50</figcaption>
+        </figure>
+    </div>
+    
+    <p class = 'paragraph'>
+        When we keep the grid size constant and vary the Peclet Number, we can see its effects on the oscillations. At a low Pe, where convection has less impact on the flow, 
+        we no oscillations, but as we increase Pe, we start seeing more oscillations as convection plays a stronger role.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe12.5grid25.png" alt = "Graph of pe = 12.5 and grid size of 25">
+            <figcaption>Figure 4: Pe = 12.5, grid = 25</figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe50grid25.png" alt = "Graph of pe = 50 and grid size of 25">
+            <figcaption>Figure 5: Pe = 50, grid = 25</figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe200grid25.png" alt = "Graph of pe = 200 and grid size of 25">
+            <figcaption>Figure 6: Pe = 200, grid = 25</figcaption>
+        </figure>
+    </div>
+
+    <p class = 'paragraph'>
+        The reason we see those oscillations at a higher Pe is because we discretized the governing equation using central difference. This takes into account the downstream velocity, which, 
+        if the flow is in one direction, should not effect the flow upstream. If we use backward difference for the convection term, we can see that the oscillations are completely gone 
+        even with an extremely coarse grid. This shows how important the discretization method is when modeling a problem. When the convection is strong, we often choose something 
+        like the upwind difference scheme, which chooses the velocity in the upwind direction.
+    </p>
+    <div class = 'figure-container'>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe50grid5upwind.png" alt = "Graph of pe = 50 and grid size of 5">
+            <figcaption>Figure 7: Pe = 50, grid = 5</figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe50grid10upwind.png" alt = "Graph of pe = 50 and grid size of 10">
+            <figcaption>Figure 8: Pe = 50, grid = 10</figcaption>
+        </figure>
+        <figure>
+            <img class = 'resize-image1' src = "images/hw1/pe200grid20upwind.png" alt = "Graph of pe = 200 and grid size of 20">
+            <figcaption>Figure 9: Pe = 200, grid = 20</figcaption>
+        </figure>
+    </div>
+
+</body>
+</html>
